@@ -18,19 +18,9 @@ with open("bot_user_agents.txt", "r") as file:
 
 
 def get_country(ip_address):
-    try:
-        reader = geoip2.database.Reader("misc/GeoLite2-Country.mmdb")
-        try:
-            response = reader.country(ip_address)
-            country = response.country.name
-            return country
-        except geoip2.errors.AddressNotFoundError:
-            return "Unknown"
-        finally:
-            reader.close()
-    except FileNotFoundError:
-        # If the GeoIP database file isn't found, just return "Unknown"
-        return "Unknown"
+    # Since we are removing IP address handling and country lookup,
+    # we can simply return a default value (e.g., "Unknown").
+    return "Unknown"
 
 
 def get_client_ip() -> str:
